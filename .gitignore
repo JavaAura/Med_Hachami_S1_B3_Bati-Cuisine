@@ -1,0 +1,4 @@
+jar/*
+out/prorduction
+MANIFEST.MF
+.env
