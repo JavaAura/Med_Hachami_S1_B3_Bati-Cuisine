@@ -1,6 +1,6 @@
 package Model;
 
-public class Composant {
+public abstract class Composant {
     private Long Id;
     private String nom;
     private String typeComposant;

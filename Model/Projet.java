@@ -2,28 +2,39 @@ package Model;
 
 import Enum.StatutProject;
 
-public class Project {
+
+
+
+import java.util.List;
+
+public class Projet {
     private Long Id;
     private String nomProjet;
     private Double margeBeneficiaire;
     private Double coutTotal;
     private StatutProject etatProjet;
+    private Client client;
+    private List<Composant> composants;
 
-    public Project(){}
 
-    public Project(String nomProjet,Double margeBeneficiaire,Double coutTotal , StatutProject etatProjet){
+
+    public Projet(){}
+
+    public Projet(String nomProjet,Double margeBeneficiaire,Double coutTotal , StatutProject etatProjet , Client client){
         this.nomProjet = nomProjet ;
         this.margeBeneficiaire = margeBeneficiaire;
         this.coutTotal = coutTotal;
         this.etatProjet = etatProjet;
+        this.client = client;
     }
 
-    public Project(Long Id,String nomProjet,Double margeBeneficiaire,Double coutTotal , StatutProject etatProjet){
+    public Projet(Long Id,String nomProjet,Double margeBeneficiaire,Double coutTotal , StatutProject etatProjet , Client client){
         this.Id = Id;
         this.nomProjet = nomProjet ;
         this.margeBeneficiaire = margeBeneficiaire;
         this.coutTotal = coutTotal;
         this.etatProjet = etatProjet;
+        this.client = client;
     }
 
     public Long getId(){
@@ -64,6 +75,22 @@ public class Project {
 
     public void setEtatProjet(StatutProject etatProjet){
         this.etatProjet = etatProjet;
+    }
+
+    public Client getClient(){
+        return this.client;
+    }
+
+    public void setClient(Client client){
+        this.client = client;
+    }
+
+    public List<Composant> getListComposants(){
+        return this.composants;
+    }
+
+    public void setComposants(List<Composant> composants){
+        this.composants = composants;
     }
 
 

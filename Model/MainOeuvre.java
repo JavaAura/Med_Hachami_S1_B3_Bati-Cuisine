@@ -37,4 +37,8 @@ public class MainOeuvre extends Composant {
     public void setProductiviteOuvrier(double productiviteOuvrier){
         this.productiviteOuvrier = productiviteOuvrier;
     }
+
+    public double calculerCout() {
+        return this.tauxHoraire * this.heureTravail * this.productiviteOuvrier;
+    }
 }
