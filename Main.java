@@ -1,18 +1,15 @@
+import controllers.HomeController;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import Utils.DatabaseConnection;
 public class Main {
-     public static void main(String[] args) throws SQLException{
 
-       Connection con = DatabaseConnection.getConnection();
-       if (con == null) {
-            throw new SQLException("Database connection is not initialized.");
-        }
+     public static void main(String[] args){
 
-      System.out.println("Hello world");
-
+    //   runHome();
+    HomeController homeController = new HomeController();
+    homeController.start();
+      
     }
+
+
 
 }

@@ -4,21 +4,18 @@ public abstract class Composant {
     private Long Id;
     private String nom;
     private String typeComposant;
-    private double tauxTva;
 
     public Composant(){}
 
-    public Composant(String nom, String typeComposant, double tauxTva){
+    public Composant(String nom, String typeComposant){
         this.nom = nom;
         this.typeComposant = typeComposant;
-        this.tauxTva = tauxTva;
     }
 
-    public Composant(Long Id ,String nom, String typeComposant, double tauxTva){
+    public Composant(Long Id ,String nom, String typeComposant){
         this.Id = Id;
         this.nom = nom;
         this.typeComposant = typeComposant;
-        this.tauxTva = tauxTva;
     }
 
     public Long getId(){
@@ -45,11 +42,5 @@ public abstract class Composant {
         this.typeComposant = typeComposant;
     }
 
-    public double getTauxTva(){
-        return this.tauxTva;
-    }
-
-    public void setTauxTva(double tauxTva){
-        this.tauxTva = tauxTva;
-    }
+    
 }

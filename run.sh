@@ -10,6 +10,7 @@ CLASS_DIR="$PROJECT_DIR/out/production/Bati-Cuisine"
 JAR_DIR="$PROJECT_DIR/jar"
 JAR_NAME="Bati-Cuisine.jar"
 MANIFEST_FILE="$PROJECT_DIR/MANIFEST.MF"
+LIB_DIR="$PROJECT_DIR/lib"
 MYSQL_CONNECTOR="/usr/share/java/postgresql-42.7.4.jar"
 MAIN_CLASS="Main"
 
@@ -24,7 +25,8 @@ JAVA_OPTS="-javaagent:$IDEA_AGENT=45221:$IDEA_BIN \
            -Dsun.stderr.encoding=UTF-8"
 
 # Compilation options
-COMPILE_OPTS="-d $CLASS_DIR -classpath $MYSQL_CONNECTOR"
+CLASSPATH="$MYSQL_CONNECTOR:$LIB_DIR/slf4j-api-2.0.9.jar:$LIB_DIR/slf4j-simple-2.0.9.jar"
+COMPILE_OPTS="-d $CLASS_DIR -classpath $CLASSPATH"
 
 # Create the necessary directories if they don't exist
 mkdir -p $CLASS_DIR $JAR_DIR
@@ -60,7 +62,7 @@ fi
 
 # Run the JAR file without the -jar option (specify main class)
 echo "Running JAR file..."
-$JAVA $JAVA_OPTS -classpath "$JAR_DIR/$JAR_NAME:$MYSQL_CONNECTOR" $MAIN_CLASS
+$JAVA $JAVA_OPTS -classpath "$JAR_DIR/$JAR_NAME:$CLASSPATH" $MAIN_CLASS
 
 # Check if the JAR file ran successfully
 if [ $? -eq 0 ]; then

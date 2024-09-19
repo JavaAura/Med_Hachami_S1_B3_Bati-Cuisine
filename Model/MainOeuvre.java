@@ -7,13 +7,21 @@ public class MainOeuvre extends Composant {
 
     public MainOeuvre(){}
 
-    public MainOeuvre(Long Id , String nom, String typeComposant, double tauxTva ,double tauxHoraire , double heureTravail,double productiviteOuvrier){
-        super(Id, nom ,typeComposant ,tauxTva);
+    public MainOeuvre( String nom, String typeComposant , double tauxHoraire , double heureTravail,double productiviteOuvrier){
+        super(nom ,typeComposant );
         this.tauxHoraire = tauxHoraire;
         this.heureTravail = heureTravail;
         this.productiviteOuvrier = productiviteOuvrier;
     }
 
+    public MainOeuvre(Long Id , String nom, String typeComposant , double tauxHoraire , double heureTravail,double productiviteOuvrier){
+        super(Id, nom ,typeComposant );
+        this.tauxHoraire = tauxHoraire;
+        this.heureTravail = heureTravail;
+        this.productiviteOuvrier = productiviteOuvrier;
+    }
+
+   
     public double getTauxHoraire(){
         return this.tauxHoraire;
     }

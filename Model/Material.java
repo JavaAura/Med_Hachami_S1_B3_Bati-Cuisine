@@ -8,8 +8,16 @@ public class Material extends Composant {
 
     public Material(){}
 
-    public Material(Long Id , String nom, String typeComposant, double tauxTva , double coutUnitaire  ,double quantity , double coutTransport , double coefficientQualite){
-        super(Id, nom ,typeComposant ,tauxTva);
+    public Material( String nom,  double coutUnitaire  ,double quantity , double coutTransport , double coefficientQualite){
+        super( nom ,"typeComposant" );
+        this.coutUnitaire = coutUnitaire;
+        this.quantity = quantity;
+        this.coutTransport = coutTransport;
+        this.coefficientQualite = coefficientQualite;
+    }
+
+    public Material(Long Id , String nom ,double coutUnitaire  ,double quantity , double coutTransport , double coefficientQualite){
+        super(Id, nom ,"typeComposant" );
         this.coutUnitaire = coutUnitaire;
         this.quantity = quantity;
         this.coutTransport = coutTransport;
@@ -31,6 +39,26 @@ public class Material extends Composant {
     public void setCoutTransport(double coutTransport){
         this.coutTransport = coutTransport; 
     }
+
+   
+
+    public double getCoutUnitaire(){
+        return this.coutUnitaire;
+    }
+
+    public void setCoutUnitaire(double coutUnitaire){
+        this.coutUnitaire = coutUnitaire;
+    }
+
+    public double getCoefficientQualite(){
+        return this.coefficientQualite;
+    }
+
+    public void setCoefficientQualite(double coefficientQualite){
+        this.coefficientQualite = coefficientQualite;
+    }
+
+
 
     public double calculerCout() {
         return (this.quantity * this.coutUnitaire * this.coefficientQualite )+ this.coutTransport;
