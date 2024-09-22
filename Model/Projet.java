@@ -14,7 +14,8 @@ public class Projet {
     private Double coutTotal;
     private StatutProject etatProjet;
     private Client client;
-    private List<Composant> composants;
+    private List<MainOeuvre> labors;
+    private List<Material> materials;
 
 
 
@@ -85,13 +86,55 @@ public class Projet {
         this.client = client;
     }
 
-    public List<Composant> getListComposants(){
-        return this.composants;
+    public List<Material> getMaterials(){
+        return this.materials;
     }
 
-    public void setComposants(List<Composant> composants){
-        this.composants = composants;
+    public void setMaterials(List<Material> materials){
+        this.materials = materials;
     }
+
+
+    public List<MainOeuvre> getLabors(){
+        return this.labors;
+    }
+
+    public void setLabors(List<MainOeuvre> labors){
+        this.labors = labors;
+    }
+  
+
+
+    // public double calculerCoutTotal(double tauxTVA, boolean appliquerMarge) {
+    //     double coutMateriauxAvantTVA = 0;
+    //     double coutMateriauxAvecTVA = 0;
+    //     double coutMainOeuvreAvantTVA = 0;
+    //     double coutMainOeuvreAvecTVA = 0;
+
+    //     for (Composant composant : composants) {
+    //         if (composant instanceof Material) {
+    //             Material mat = (Material) composant;
+    //             coutMateriauxAvantTVA += mat.calculerCoutAvantTVA();
+    //             coutMateriauxAvecTVA += mat.calculerCoutAvecTVA(tauxTVA);
+    //         } else if (composant instanceof MainOeuvre) {
+    //             MainOeuvre mainOeuvre = (MainOeuvre) composant;
+    //             coutMainOeuvreAvantTVA += mainOeuvre.calculerCoutAvantTVA();
+    //             coutMainOeuvreAvecTVA += mainOeuvre.calculerCoutAvecTVA(tauxTVA);
+    //         }
+    //     }
+
+    //     double coutTotalAvantMarge = coutMateriauxAvecTVA + coutMainOeuvreAvecTVA;
+    //     double marge = 0;
+
+    //     if (appliquerMarge) {
+    //         marge = coutTotalAvantMarge * (margeBeneficiaire / 100);
+    //     }
+
+    //     this.coutTotal = coutTotalAvantMarge + marge;
+    //     return this.coutTotal;
+    // }
+
+  
 
 
 
