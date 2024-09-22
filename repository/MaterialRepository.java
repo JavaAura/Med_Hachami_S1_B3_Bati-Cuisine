@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 
 public interface MaterialRepository {
-    Boolean addMaterial(Material material) throws SQLException;
+    Boolean addMaterial(Material material);
 }
