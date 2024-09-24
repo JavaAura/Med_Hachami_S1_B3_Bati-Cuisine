@@ -94,7 +94,6 @@ Ensure you have the following installed on your machine:
    cd Med_Hachami_S1_B3_Bati-Cuisine
 
 2. Create a PostgreSQL database and run the SQL script to set up the necessary tables:
-    ```bash
 
 3. Update the `.env` file with your database connection details.
 
