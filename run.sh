@@ -5,14 +5,12 @@ JAVA_HOME="/usr/lib/jvm/jdk-22-oracle-x64"
 IDEA_AGENT="/home/mhachami/Downloads/ideaIC-2024.2.0.2/idea-IC-242.20224.419/lib/idea_rt.jar"
 IDEA_BIN="/home/mhachami/ideaIC-2024.2.0.2/idea-IC-242.20224.419/bin"
 PROJECT_DIR="/home/mhachami/Desktop/projects/A2_brief/Med_Hachami_S1_B3_Bati-Cuisine"
-SRC_DIR="$PROJECT_DIR"
+# SRC_DIR="$PROJECT_DIR/src"
 CLASS_DIR="$PROJECT_DIR/out/production/Bati-Cuisine"
-JAR_DIR="$PROJECT_DIR/jar"
-JAR_NAME="Bati-Cuisine.jar"
-MANIFEST_FILE="$PROJECT_DIR/MANIFEST.MF"
 LIB_DIR="$PROJECT_DIR/lib"
-MYSQL_CONNECTOR="/usr/share/java/postgresql-42.7.4.jar"
-MAIN_CLASS="Main"
+PSQL="/usr/share/java/postgresql-42.7.4.jar"
+MAIN_CLASS="com.baticuisine.Main"
+LOGBACK_CONFIG="$PROJECT_DIR/com/baticuisine/logback.xml"
 
 # Define the Java compiler and runtime
 JAVA="$JAVA_HOME/bin/java"
@@ -25,15 +23,18 @@ JAVA_OPTS="-javaagent:$IDEA_AGENT=45221:$IDEA_BIN \
            -Dsun.stderr.encoding=UTF-8"
 
 # Compilation options
-CLASSPATH="$MYSQL_CONNECTOR:$LIB_DIR/slf4j-api-2.0.9.jar:$LIB_DIR/slf4j-simple-2.0.9.jar"
+CLASSPATH="$PSQL:$LIB_DIR/slf4j-api-2.0.9.jar:$LIB_DIR/logback-classic-1.4.9.jar:$LIB_DIR/logback-core-1.4.9.jar"
 COMPILE_OPTS="-d $CLASS_DIR -classpath $CLASSPATH"
 
 # Create the necessary directories if they don't exist
-mkdir -p $CLASS_DIR $JAR_DIR
+mkdir -p $CLASS_DIR
 
 # Compile all Java files in the project
 echo "Compiling Java files..."
 $JAVAC $COMPILE_OPTS $(find $SRC_DIR -name "*.java")
+
+cp "$LOGBACK_CONFIG" "$CLASS_DIR/"
+echo "logback.xml copied to CLASS_DIR."
 
 # Check if compilation was successful
 if [ $? -eq 0 ]; then
@@ -43,32 +44,15 @@ else
     exit 1
 fi
 
-# Create the manifest file
-echo "Creating MANIFEST.MF..."
-echo "Manifest-Version: 1.0" > $MANIFEST_FILE
-echo "Main-Class: $MAIN_CLASS" >> $MANIFEST_FILE
+# Run the compiled classes directly
+echo "Running compiled classes..."
+$JAVA $JAVA_OPTS -classpath "$CLASS_DIR:$CLASSPATH" $MAIN_CLASS
 
-# Package compiled classes into a JAR
-echo "Creating JAR file..."
-jar cfm $JAR_DIR/$JAR_NAME $MANIFEST_FILE -C $CLASS_DIR .
-
-# Check if JAR creation was successful
+# Check if the program ran successfully
 if [ $? -eq 0 ]; then
-    echo "JAR file created successfully: $JAR_NAME"
+    echo "Program ran successfully."
 else
-    echo "Failed to create JAR file."
-    exit 1
-fi
-
-# Run the JAR file without the -jar option (specify main class)
-echo "Running JAR file..."
-$JAVA $JAVA_OPTS -classpath "$JAR_DIR/$JAR_NAME:$CLASSPATH" $MAIN_CLASS
-
-# Check if the JAR file ran successfully
-if [ $? -eq 0 ]; then
-    echo "JAR file ran successfully."
-else
-    echo "Failed to run JAR file."
+    echo "Failed to run the program."
     exit 1
 fi
 

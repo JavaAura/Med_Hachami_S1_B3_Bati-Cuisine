@@ -1,5 +1,6 @@
 jar/*
-out/prorduction
+/out/production/
 MANIFEST.MF
 .env
-db.sql
+# db.sql
+logs/*
