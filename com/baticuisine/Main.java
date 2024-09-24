@@ -32,31 +32,30 @@ import com.baticuisine.service.Impl.DevisServiceImpl;
 
 public class Main {
 
-     public static void main(String[] args){
-        ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
-        ClientServiceImpl clientServiceImpl = new ClientServiceImpl(clientRepository);
+   public static void main(String[] args){
+      ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
+      ClientServiceImpl clientServiceImpl = new ClientServiceImpl(clientRepository);
 
-        MaterialRepositoryImpl materialRepositoryImpl = new MaterialRepositoryImpl();
-        MaterialServiceImpl materialServiceImpl = new MaterialServiceImpl(materialRepositoryImpl);
-
-
-        MainOeuvreRepositoryImpl mainOeuvreRepositoryImpl = new MainOeuvreRepositoryImpl();
-        MainOeuvreServiceImpl mainOeuvreServiceImpl = new MainOeuvreServiceImpl(mainOeuvreRepositoryImpl);
-
-        ProjetRepositoryImpl projetRepositoryImpl = new ProjetRepositoryImpl();
-        ProjetServiceImpl projetServiceImpl = new ProjetServiceImpl(projetRepositoryImpl);
-
-        DevisRepositoryImpl devisRepositoryImpl = new DevisRepositoryImpl();
-        DevisServiceImpl devisServiceImpl = new DevisServiceImpl(devisRepositoryImpl);
+      MaterialRepositoryImpl materialRepositoryImpl = new MaterialRepositoryImpl();
+      MaterialServiceImpl materialServiceImpl = new MaterialServiceImpl(materialRepositoryImpl);
 
 
+      MainOeuvreRepositoryImpl mainOeuvreRepositoryImpl = new MainOeuvreRepositoryImpl();
+      MainOeuvreServiceImpl mainOeuvreServiceImpl = new MainOeuvreServiceImpl(mainOeuvreRepositoryImpl);
 
-    
-       root root = new root(clientServiceImpl, materialServiceImpl, mainOeuvreServiceImpl , projetServiceImpl,devisServiceImpl);
+      ProjetRepositoryImpl projetRepositoryImpl = new ProjetRepositoryImpl();
+      ProjetServiceImpl projetServiceImpl = new ProjetServiceImpl(projetRepositoryImpl);
 
-       root.showMenu();
+      DevisRepositoryImpl devisRepositoryImpl = new DevisRepositoryImpl();
+      DevisServiceImpl devisServiceImpl = new DevisServiceImpl(devisRepositoryImpl);
 
 
 
-    }
+      root root = new root(clientServiceImpl, materialServiceImpl, mainOeuvreServiceImpl , projetServiceImpl,devisServiceImpl);
+
+      root.showMenu();
+
+
+
+   }
 }
